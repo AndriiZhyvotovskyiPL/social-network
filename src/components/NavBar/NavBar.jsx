@@ -1,14 +1,14 @@
 import React from "react";
-import s from "./Navbar.module.css";
+import s from "./NavBar.module.css";
 
-const Navbar = () => {
+const NavBar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
                 <a>Profile</a>
             </div>
             <div className={s.item}>
-                <a>Message</a>
+                <a>Messages</a>
             </div>
             <div className={s.item}>
                 <a>News</a>
@@ -23,4 +23,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar;
+export default NavBar;
