@@ -27,7 +27,7 @@ const Dialogs = (props) => {
                     Hi, how are you?
                 </div>
                 <div className={s.message}>
-                    I don't no
+                    I don't know
                 </div>
                 <div className={s.message}>
                     Ok bro
