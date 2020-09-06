@@ -7,16 +7,17 @@
     padding: 20px;
 }
 
-.dialog {
-
+.dialogsItems a {
+    color: white;
+    text-decoration: none;
 }
 
 .dialogsItems a.activeLink {
     color: gold;
 }
-.dialogsItems a {
-    color: white;
-    text-decoration: none;
+
+.dialog {
+
 }
 
 .messages {
