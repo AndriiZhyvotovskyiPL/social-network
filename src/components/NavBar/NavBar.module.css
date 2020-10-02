@@ -28,6 +28,7 @@
 .friendsImg {
     display: grid;
     grid-template-columns: 60px 60px 60px;
+    grid-column-gap: 5px;
     font-size: 18px;
     text-align: center;
 

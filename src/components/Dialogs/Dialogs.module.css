@@ -1,6 +1,6 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 5fr 5fr;
 }
 
 .dialogsItems {
@@ -16,8 +16,10 @@
     color: gold;
 }
 
-.dialog {
-
+.dialog img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
 }
 
 .messages {
