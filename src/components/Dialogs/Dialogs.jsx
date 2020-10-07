@@ -10,6 +10,12 @@ const Dialogs = (props) => {
 
     let outgoingMessages = props.state.messages.outgoing.map(m => <Message message={m.message}/>)
 
+    let newMessage = React.createRef();
+
+    let sandMessage = () => {
+        let text = newMessage.current.value;
+        alert(text);
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -17,6 +23,12 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {incomeMessages}
+                <div>
+                    <textarea ref={newMessage} value='Text'/>
+                </div>
+                <div>
+                    <button onClick={sandMessage}>Sand message</button>
+                </div>
             </div>
             <div className={s.messages}>
                 {outgoingMessages}
