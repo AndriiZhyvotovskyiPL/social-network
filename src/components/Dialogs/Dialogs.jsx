@@ -24,7 +24,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {incomeMessages}
                 <div>
-                    <textarea ref={newMessage} value='Text'/>
+                    <textarea ref={newMessage} defaultValue='Text'/>
                 </div>
                 <div>
                     <button onClick={sandMessage}>Sand message</button>
