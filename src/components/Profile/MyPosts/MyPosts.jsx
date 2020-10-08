@@ -10,6 +10,7 @@ const MyPosts = (props) => {
     let addPost = () => {
         let text = newPostElement.current.value;
         props.addPost(text);
+        newPostElement.current.value = '';
     }
 
     return (
@@ -17,7 +18,7 @@ const MyPosts = (props) => {
             <h3>My post</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement} value='Text post'/>
+                    <textarea ref={newPostElement} defaultValue='Text post'/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
