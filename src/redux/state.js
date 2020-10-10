@@ -40,7 +40,8 @@ let state = {
                 {id: 3, message: 'Ok bro'},
                 {id: 4, message: '5 minute'}
             ]
-        }
+        },
+        newMessage: 'Message text'
     },
     sidebar: {
         friends: [
@@ -65,6 +66,21 @@ export let addPost = () => {
 
 export let updatePostText = (postText) => {
     state.profilePage.newPostText = postText;
+    rerenderEntireTree(state);
+}
+
+export let sandMessage = () => {
+    let newMessage = {
+        id: 5,
+        message: state.dialogsPage.newMessage
+    }
+    state.dialogsPage.messages.outgoing.push(newMessage);
+    rerenderEntireTree(state);
+    state.dialogsPage.newMessage = '';
+}
+
+export let updateMessage = (newMessageText) => {
+    state.dialogsPage.newMessage = newMessageText;
     rerenderEntireTree(state);
 }
 

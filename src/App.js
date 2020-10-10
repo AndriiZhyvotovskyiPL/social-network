@@ -20,7 +20,11 @@ const App = (props) => {
                              updatePostText={props.updatePostText}
                              addPost={props.addPost}/>
                 }/>
-                <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                <Route path="/dialogs" render={() =>
+                    <Dialogs state={props.state.dialogsPage}
+                             sandMessage={props.sandMessage}
+                             updateMessage={props.updateMessage}/>
+                }/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/setting" render={() => <Setting/>}/>
