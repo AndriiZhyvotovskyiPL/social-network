@@ -6,9 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
 import store from "./redux/state";
 
-let state = store.getState();
 
-export let rerenderEntireTree = (state) => {
+let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
@@ -21,7 +20,7 @@ export let rerenderEntireTree = (state) => {
     );
 }
 
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
 store.subscribe(rerenderEntireTree);
 

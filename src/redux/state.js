@@ -50,13 +50,13 @@ let store = {
         }
     },
 
-    _subscriber() {
+    _callSubscriber() {
         //observer
         //use rerenderEntireTree form index.js
     },
 
     subscribe(observer) {
-        this._subscriber = observer;
+        this._callSubscriber = observer;
     },
 
     getState() {
@@ -71,13 +71,13 @@ let store = {
             src: 'https://i.wpimg.pl/1777x0/d.wpimg.pl/1294094975--769611975/avatar.jpg'
         };
         this._state.profilePage.posts.push(newPost);
-        this._subscriber(this._state);
+        this._callSubscriber(this._state);
         this._state.profilePage.newPostText = '';
     },
 
     updatePostText(postText) {
         this._state.profilePage.newPostText = postText;
-        this._subscriber(this._state);
+        this._callSubscriber(this._state);
     },
 
     sandMessage() {
@@ -86,13 +86,13 @@ let store = {
             message: this._state.dialogsPage.newMessage
         }
         this._state.dialogsPage.messages.outgoing.push(newMessage);
-        this._subscriber(this._state);
+        this._callSubscriber(this._state);
         this._state.dialogsPage.newMessage = '';
     },
 
     updateMessage(newMessageText) {
         this._state.dialogsPage.newMessage = newMessageText;
-        this._subscriber(this._state);
+        this._callSubscriber(this._state);
     }
 }
 
