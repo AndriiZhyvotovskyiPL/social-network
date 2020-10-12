@@ -13,12 +13,12 @@ const Dialogs = (props) => {
     let newMessage = React.createRef();
 
     let sandMessage = () => {
-        props.store.sandMessage();
+        props.dispatch({type: 'SAND-MESSAGE'});
     }
 
     let onChangeMessage = () => {
         let text = newMessage.current.value;
-        props.store.updateMessage(text);
+        props.dispatch({type: 'UPDATE-MESSAGE', newMessageText: text});
     }
     return (
         <div className={s.dialogs}>
