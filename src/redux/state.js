@@ -1,6 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
-const SAND_MESSAGE = 'SAND-MESSAGE';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 
 
@@ -45,7 +45,7 @@ let store = {
                     {id: 4, message: '5 minute'}
                 ]
             },
-            newMessage: 'Message text'
+            newMessageText: 'Message text'
         },
         sidebar: {
             friends: [
@@ -83,16 +83,16 @@ let store = {
         } else if (action.type === UPDATE_POST_TEXT) {
             this._state.profilePage.newPostText = action.postText;
             this._callSubscriber(this._state);
-        } else if (action.type === SAND_MESSAGE) {
+        } else if (action.type === SEND_MESSAGE) {
             let newMessage = {
                 id: 5,
-                message: this._state.dialogsPage.newMessage
+                message: this._state.dialogsPage.newMessageText
             }
             this._state.dialogsPage.messages.outgoing.push(newMessage);
             this._callSubscriber(this._state);
-            this._state.dialogsPage.newMessage = '';
+            this._state.dialogsPage.newMessageText = '';
         } else if (action.type === UPDATE_MESSAGE) {
-            this._state.dialogsPage.newMessage = action.newMessageText;
+            this._state.dialogsPage.newMessageText = action.newMessageText;
             this._callSubscriber(this._state);
         }
     }
@@ -105,7 +105,7 @@ export const updatePostTextActionCreator = (text) => ({
     postText: text
 })
 
-export const sandMessageActionCreate = () => ({type: SAND_MESSAGE})
+export const sendMessageActionCreate = () => ({type: SEND_MESSAGE})
 
 export const updateMessageActionCreator = (text) => ({
     type: UPDATE_MESSAGE,

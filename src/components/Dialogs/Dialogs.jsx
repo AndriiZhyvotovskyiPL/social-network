@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import {sandMessageActionCreate, updateMessageActionCreator} from "../../redux/state";
+import {sendMessageActionCreate, updateMessageActionCreator} from "../../redux/state";
 
 const Dialogs = (props) => {
     let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src}/>)
@@ -13,8 +13,8 @@ const Dialogs = (props) => {
 
     let newMessage = React.createRef();
 
-    let sandMessage = () => {
-        props.dispatch(sandMessageActionCreate());
+    let sendMessage = () => {
+        props.dispatch(sendMessageActionCreate());
     }
 
     let onChangeMessage = () => {
@@ -35,10 +35,10 @@ const Dialogs = (props) => {
                 <div>
                     <textarea ref={newMessage}
                               onChange={onChangeMessage}
-                              value={props.state.newMessage}/>
+                              value={props.state.newMessageText}/>
                 </div>
                 <div>
-                    <button onClick={sandMessage}>Sand message</button>
+                    <button onClick={sendMessage}>Send message</button>
                 </div>
             </div>
         </div>
