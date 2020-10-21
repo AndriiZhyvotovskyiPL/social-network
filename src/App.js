@@ -8,18 +8,27 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import StoreContext from "./StoreContext";
 
 const App = (props) => {
     return (
         <div className="app-wrapper">
             <Header/>
-            <NavBar state={props.state.sidebar}/>
+            <StoreContext.Consumer>
+                {(store) => {
+                    let state = store.getState();
+                    return (
+                        <NavBar state={state.sidebar}/>
+                    )
+                }
+                }
+            </StoreContext.Consumer>
             <div className="app-wrapper-content">
                 <Route path="/profile" render={() =>
                     <Profile store={props.store}/>
                 }/>
                 <Route path="/dialogs" render={() =>
-                    <DialogsContainer store={props.store}/>
+                    <DialogsContainer/>
                 }/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
