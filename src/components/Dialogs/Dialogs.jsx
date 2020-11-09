@@ -6,9 +6,9 @@ import DialogItem from "./DialogItem/DialogItem";
 const Dialogs = (props) => {
     let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src}/>)
 
-    let incomeMessages = props.messagesIncome.map(m => <Message message={m.message}/>)
+    let messagesIncome = props.messagesIncome.map(m => <Message message={m.message}/>)
 
-    let outgoingMessages = props.messagesOutgoing.map(m => <Message message={m.message}/>)
+    let messagesOutgoing = props.messagesOutgoing.map(m => <Message message={m.message}/>)
 
     let newMessage = React.createRef();
 
@@ -27,10 +27,10 @@ const Dialogs = (props) => {
                 {dialogsElements}
             </div>
             <div className={s.messages}>
-                {incomeMessages}
+                {messagesIncome}
             </div>
             <div className={s.messages}>
-                {outgoingMessages}
+                {messagesOutgoing}
                 <div>
                     <textarea ref={newMessage}
                               onChange={onChangeMessage}
