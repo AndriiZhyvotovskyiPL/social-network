@@ -4,11 +4,11 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src}/>)
+    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} src={d.src} key={d.id}/>)
 
-    let messagesIncome = props.messagesIncome.map(m => <Message message={m.message}/>)
+    let messagesIncome = props.messagesIncome.map(m => <Message message={m.message} key={m.id}/>)
 
-    let messagesOutgoing = props.messagesOutgoing.map(m => <Message message={m.message}/>)
+    let messagesOutgoing = props.messagesOutgoing.map(m => <Message message={m.message} key={m.id}/>)
 
     let newMessage = React.createRef();
 
