@@ -42,7 +42,6 @@ class Users extends React.Component {
                                      }}>{p}</span>
                     })}
                 </div>
-                <div>1 2 3 </div>
                 {
                     this.props.users.map(u => <div key={u.id}>
                 <span>
