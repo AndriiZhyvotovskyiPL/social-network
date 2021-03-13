@@ -6,8 +6,9 @@ const Header = (props) => {
     return (
         <header className={s.header}>
             <img src="https://www.freelogodesign.org/Content/img/logo-samples/flooop.png" alt=""/>
-            <div className={s.loginBlock}> {props.isAuth ? props.login
-                : <NavLink to='/login'>Login</NavLink>}
+            <div className={s.loginBlock}> {props.isAuth
+                ? <div>{props.login}  <button onClick={props.logout}>Logout</button></div>
+                : <NavLink to='/login'><button>Login</button></NavLink>}
             </div>
         </header>
     );
