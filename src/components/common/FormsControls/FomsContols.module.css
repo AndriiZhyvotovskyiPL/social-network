@@ -6,3 +6,10 @@
 .formControl.error span {
     color: red;
 }
+
+.formControlSubmitError {
+    min-width: 150px;
+    max-width: 225px;
+    border: solid red 2px;
+    color: red;
+}
