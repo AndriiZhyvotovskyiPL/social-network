@@ -57,5 +57,4 @@ export default compose(
             toggleInProgress,
             getUsers
         }),
-    WithAuthRedirect
 )(UsersContainer);
