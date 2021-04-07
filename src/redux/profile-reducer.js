@@ -1,8 +1,8 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD_POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS';
+const ADD_POST = 'social-network/profile/ADD_POST';
+const SET_USER_PROFILE = 'social-network/profile/SET_USER_PROFILE';
+const SET_PROFILE_STATUS = 'social-network/profileSET_PROFILE_STATUS';
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -57,35 +57,28 @@ export const addPost = (newPostText) => ({type: ADD_POST, newPostText})
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 const setProfileStatus = (status) => ({type: SET_PROFILE_STATUS, status})
 
-
 //thunkCreator
 
 export const getProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data))
-            })
+    return async (dispatch) => {
+        const data = await profileAPI.getProfile(userId);
+        dispatch(setUserProfile(data))
     }
 }
 
 export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(data => {
-                dispatch(setProfileStatus(data))
-            })
+    return async (dispatch) => {
+        const data = await profileAPI.getStatus(userId);
+        dispatch(setProfileStatus(data))
     }
 }
 
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(setProfileStatus(status))
-                }
-            })
+    return async (dispatch) => {
+        const data = await profileAPI.updateStatus(status);
+        if (data.resultCode === 0) {
+            dispatch(setProfileStatus(status))
+        }
     }
 }
 
