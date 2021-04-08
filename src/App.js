@@ -44,4 +44,4 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
 
-export default     connect(mapStateToProps, {initializedApp})(App);
+export default connect(mapStateToProps, {initializedApp})(App);
