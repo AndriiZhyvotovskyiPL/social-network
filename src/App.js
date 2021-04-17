@@ -4,15 +4,17 @@ import {Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavBarContainer from "./components/NavBar/NavBarContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileInfo/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {initializedApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import {withSuspense} from "./hoc/withSuspense";
+
+const ProfileContainer = React.lazy(()=> import('./components/Profile/ProfileInfo/ProfileContainer'));
+const DialogsContainer = React.lazy(()=> import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(()=> import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
     componentDidMount() {
@@ -27,11 +29,11 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <NavBarContainer/>
                 <div className="app-wrapper-content">
-                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                    <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                    <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
+                    <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
-                    <Route path="/users" render={() => <UsersContainer/>}/>
+                    <Route path="/users" render={withSuspense(UsersContainer)}/>
                     <Route path="/setting" render={() => <Setting/>}/>
                     <Route path="/login" render={() => <Login/>}/>
                 </div>
