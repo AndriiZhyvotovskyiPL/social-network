@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import store from "./redux/redux-store";
 import {Provider} from "react-redux";
 
 
 ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter>
         <React.StrictMode>
             <Provider store={store}>
                 <App/>
             </Provider>
         </React.StrictMode>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById('root')
 );
 
