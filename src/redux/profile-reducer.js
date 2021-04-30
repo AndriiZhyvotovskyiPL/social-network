@@ -2,7 +2,8 @@ import {profileAPI} from "../api/api";
 
 const ADD_POST = 'social-network/profile/ADD_POST';
 const SET_USER_PROFILE = 'social-network/profile/SET_USER_PROFILE';
-const SET_PROFILE_STATUS = 'social-network/profileSET_PROFILE_STATUS';
+const SET_PROFILE_STATUS = 'social-network/profile/SET_PROFILE_STATUS';
+const SAVE_PHOTO_SUCCESS = 'social-network/profile/SAVE_PHOTO_SUCCESS';
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -46,6 +47,8 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: action.profile}
         case SET_PROFILE_STATUS:
             return {...state, status: action.status}
+        case SAVE_PHOTO_SUCCESS:
+            return {...state, profile: {...state.profile, photos:action.photos}}
         default:
             return state;
     }
@@ -56,6 +59,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText})
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 const setProfileStatus = (status) => ({type: SET_PROFILE_STATUS, status})
+const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 //thunkCreator
 
@@ -80,6 +84,16 @@ export const updateStatus = (status) => {
             dispatch(setProfileStatus(status))
         }
     }
+}
+
+export const savePhoto = (file) => {
+    return async (dispatch) => {
+        const data = await profileAPI.savePhoto(file);
+        if (data.resultCode === 0) {
+            dispatch(savePhotoSuccess(data.data.photos))
+        }
+    }
+
 }
 
 export default profileReducer;
